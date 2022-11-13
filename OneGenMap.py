@@ -8,11 +8,13 @@ with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-c
 
 import pandas as pd
 
+# Read in food insecurity data
 df = pd.read_csv("https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/Food%20Insecure%25.csv",
                  dtype={"FIPS": str})
 
 import plotly.express as px
 
+# Map that color coordinates counties across US by food insecurity %
 fig = px.choropleth_mapbox(df, geojson=counties, locations='FIPS', color='Food Insecurity %',
                            color_continuous_scale="YlOrRd",
                            range_color=(0, 30),
@@ -23,8 +25,10 @@ fig = px.choropleth_mapbox(df, geojson=counties, locations='FIPS', color='Food I
                            )
 fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
+# Read in food distribution center data
 gdf = pd.read_csv('https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/distcenters.csv')
 
+# Adds dots of distribution centers on top of mapbox
 fig.add_scattermapbox(
     lon=gdf['Longitude'],
     lat = gdf['Latitude'],
