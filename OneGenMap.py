@@ -1,3 +1,5 @@
+
+
 from urllib.request import urlopen
 import json
 
@@ -20,4 +22,15 @@ fig = px.choropleth_mapbox(df, geojson=counties, locations='FIPS', color='Food I
                            labels={'# of Food Insecure Persons Overall (1 Year)': 'Total Food Insecure'}
                            )
 fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+
+gdf = pd.read_csv('https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/distcenters.csv')
+
+fig.add_scattermapbox(
+    lon=gdf['Longitude'],
+    lat = gdf['Latitude'],
+    mode = 'markers',
+    marker_size=12,
+    marker_color='rgb(65, 105, 225)'
+)
+
 fig.show()
