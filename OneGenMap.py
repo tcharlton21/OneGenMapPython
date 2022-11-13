@@ -20,4 +20,15 @@ fig = px.choropleth_mapbox(df, geojson=counties, locations='FIPS', color='Food I
                            labels={'# of Food Insecure Persons Overall (1 Year)': 'Total Food Insecure'}
                            )
 fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+
+gdf = pd.read_csv('https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/distcenters.csv')
+
+fig2 = px.scatter_geo(gdf,
+        lon = gdf['Longitude'],
+        lat = gdf['Latitude'],
+        hover_name=gdf["Center Name"]
+        )
+
 fig.show()
+fig2.show()
+
