@@ -34,6 +34,7 @@ fig.add_scattermapbox(
     lat = gdf['Latitude'],
     mode = 'markers',
     marker_size=12,
+    text = gdf['Center Name'],
     marker_color='rgb(65, 105, 225)'
 )
 
