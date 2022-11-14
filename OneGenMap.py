@@ -27,6 +27,7 @@ fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
 # Read in food distribution center data
 gdf = pd.read_csv('https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/distcenters.csv')
+gdf_fp = pd.read_csv('https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/freshptdiscenters.csv')
 
 # Adds dots of distribution centers on top of mapbox
 fig.add_scattermapbox(
@@ -35,7 +36,16 @@ fig.add_scattermapbox(
     mode = 'markers',
     marker_size=12,
     text = gdf['Center Name'],
-    marker_color='rgb(65, 105, 225)'
+    marker_color = 'rgb(65, 105, 225)'
+)
+
+fig.add_scattermapbox(
+    lon=gdf_fp['Longitude'],
+    lat = gdf_fp['Latitude'],
+    mode = 'markers',
+    marker_size=12,
+    text = gdf_fp['Center Name'],
+    marker_color = 'rgb(42, 188, 0)'
 )
 
 fig.show()
