@@ -48,4 +48,20 @@ fig.add_scattermapbox(
     marker_color = 'rgb(42, 188, 0)'
 )
 
+# Read in warehouse data
+whd = pd.read_csv('https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/warehouselocs.csv')
+
+# Add warehouse points
+
+fig.add_scattermapbox(
+    lon=whd['Longitude'],
+    lat = whd['Latitude'],
+    mode = 'markers',
+    marker_size=12,
+    text = "One Generation Away Warehouse",
+    marker_color = 'rgb(171, 0, 252)'
+)
+
+
+
 fig.show()
