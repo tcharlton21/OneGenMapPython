@@ -1,5 +1,3 @@
-
-
 from urllib.request import urlopen
 import json
 
@@ -9,15 +7,15 @@ with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-c
 import pandas as pd
 
 # Read in food insecurity data
-df = pd.read_csv("https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/Food%20Insecure%25.csv",
+df = pd.read_csv("https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/2020FoodInsecure3.csv",
                  dtype={"FIPS": str})
 
 import plotly.express as px
 
 # Map that color coordinates counties across US by food insecurity %
-fig = px.choropleth_mapbox(df, geojson=counties, locations='FIPS', color='Food Insecurity %',
+fig = px.choropleth_mapbox(df, geojson=counties, locations='FIPS', color='Normalized%',
                            color_continuous_scale="YlOrRd",
-                           range_color=(0, 30),
+                           range_color=(0, 1),
                            mapbox_style="carto-positron",
                            zoom=5.75, center={"lat": 34.7490, "lon": -84.3880},
                            opacity=0.5,
@@ -47,5 +45,21 @@ fig.add_scattermapbox(
     text = gdf_fp['Center Name'],
     marker_color = 'rgb(42, 188, 0)'
 )
+
+# Read in warehouse data
+whd = pd.read_csv('https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/warehouselocs.csv')
+
+# Add warehouse points
+
+fig.add_scattermapbox(
+    lon=whd['Longitude'],
+    lat = whd['Latitude'],
+    mode = 'markers',
+    marker_size=12,
+    text = "One Generation Away Warehouse",
+    marker_color = 'rgb(171, 0, 252)'
+)
+
+
 
 fig.show()
