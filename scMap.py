@@ -7,7 +7,7 @@ with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-c
 import pandas as pd
 
 # Read in food insecurity data
-df = pd.read_csv("https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/SC_Fips.csv",
+df = pd.read_csv("https://raw.githubusercontent.com/tcharlton21/OneGenMapPython/main/SC%20Fips.csv",
                  dtype={"FIPS": str})
 
 import plotly.express as px
