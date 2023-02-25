@@ -17,7 +17,7 @@ fig = px.choropleth_mapbox(df, geojson=counties, locations='FIPS', color='Food I
                            color_continuous_scale="YlOrRd",
                            range_color=(0, 30),
                            mapbox_style="carto-positron",
-                           zoom=5.75, center={"lat": 34.7490, "lon": -84.3880},
+                           zoom=5.75, center={"lat": 27.66, "lon": -81.52},
                            opacity=0.5,
                            labels={'# of Food Insecure Persons Overall (1 Year)': 'Total Food Insecure'}
                            )
