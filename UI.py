@@ -87,7 +87,7 @@ def update_map(selected_map):
         # Define the slider steps
         slider_steps = []
         for i, column in enumerate(
-                ['Distance ', '10% Food Insecurity', '30% Food Insecurity', '50% Each', '70% Distance', '90% Distance',
+                ['Distance ', '90% Distance', '70% Distance', '50% Each', '70% Food Insecurity', '90% Food Insecurity',
                  'Food Insecurity %']):
             slider_step = {'args': [
                 {'z': [df_weights[column].values]},  # update the z data
